@@ -1,0 +1,28 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "<!-- Link to trello Board --> https://trello.com/b/Cm0j6I8u/project-3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brandenjw/Project3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brandenjw/Project3/issues"
+  },
+  "homepage": "https://github.com/Brandenjw/Project3#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.8",
+    "morgan": "^1.9.1"
+  }
+}
