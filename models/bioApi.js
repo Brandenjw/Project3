@@ -46,3 +46,6 @@ module.exports = {
     deleteImageById,
    
 };
+
+
+module.exports = mongoose.model("bio", imageSchema);

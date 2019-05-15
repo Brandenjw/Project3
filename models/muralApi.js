@@ -47,4 +47,4 @@ module.exports = {
  
 
 
-module.exports = mongoose.model("", muralSchema);
+module.exports = mongoose.model("mural", muralSchema);
