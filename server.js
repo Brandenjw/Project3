@@ -43,6 +43,7 @@ app.delete('/mural/:muralId', (req, res) => {
             res.send(mural);
         });
 });
+//may not be working
 
 
 
@@ -85,6 +86,7 @@ app.delete('/bio/:bioId', (req, res) => {
             res.send(bio);
         });
 });
+//may not be working
 
 const PORT = process.env.PORT || 3001
 
