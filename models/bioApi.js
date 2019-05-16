@@ -48,4 +48,3 @@ module.exports = {
 };
 
 
-module.exports = mongoose.model("bio", imageSchema);

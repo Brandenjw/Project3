@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 //  MURAL MODEL
 //////////////
 
-app.get('/murals', (req, res) => {
+app.get('/mural', (req, res) => {
     muralApi.getAllMurals()
       .then(mural => {
         res.send(mural);
@@ -29,7 +29,7 @@ app.get('/murals', (req, res) => {
   
 
 // Posting a new mural
-app.post('/,murals', (req, res) => {
+app.post('/mural', (req, res) => {
     muralApi.createNewMurals(req.body)
         .then(() => {
             res.send(mural);
@@ -37,7 +37,7 @@ app.post('/,murals', (req, res) => {
 });
 
 // Deleting a mural
-app.delete('/murals/:muralId', (req, res) => {
+app.delete('/mural/:muralId', (req, res) => {
     muralApi.deleteMuralById(req.params.muralId)
         .then(() => {
             res.send(mural);

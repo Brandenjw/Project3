@@ -1,54 +1,58 @@
-const mural = require("../models/muralApi");
+const Mural = require('../models/muralApi.js')
+
+// MODEL 1
 
 const muralController = {
-   
-    //= =====================
-    // NEW
-    //= =====================
-    // Create a function that renders the new form
-    new: function (req, res) {
-        res.send("murals/new");
+    index: async (req, res) => {
+        try {
+            const Mural = await Mural.find({})
+            res.json(Mural)
+        } catch (err) {
+            console.log(err)
+        }
     },
-    //= =====================
-    // SHOW
-    //= =====================
-    // Create a function that renders a single Users show page
-    show: function (req, res) {
-        Mural.findById(req.params.mid).then(mural => {
-            console.log(mural)
-            res.send("murals/show", { mural});
-        });
+    show: async (req, res) => {
+        try {
+            const MuralId = req.params.id
+            const Mural = await Mural.findById(MuralId)
+            res.json(Mural)
+        } catch (err) {
+            console.log(err)
+            res.json(err)
+        }
     },
-    //= =====================
-    // CREATE
-    //= =====================
-    // Create a function that creates a new mural form
-    // and upon success redirects back to the index page "/"
-    create: function (req, res) {
-        console.log(req);
-        mural.create(req.body)
-        .then(mural => {
-            res.redirect("/murals/" + murals._id);
-    })},
- 
-
-  
-//= ====================
-// DELETE
-//= ====================
-//  Create a function that deletes the form and
-//  redirects back to index page "/"
-     delete: function (req, res) {
-         console.log(req)
-     mural.findByIdAndDelete(req.params.id).then(() => {
-         res.redirect("/murals");
-    });
-},
+    create: async (req, res) => {
+        try {
+          const newMural = req.body
+          const savedMural = await Mural.create(newMural)
+          res.json(savedMural)
+        } catch (err) {
+          console.log(err)
+          res.status(500).json(err)
+        }
+    },
+    // update: async (req, res) => {
+    //     try {
+    //       const MuralId = req.params.id
+    //       const updatedMural = req.body
+    //       const savedMural = await Mural.findByIdAndUpdate(MuralId, updatedMural, {new: true})
+    //       res.json(savedMural)
+    //     } catch (err) {
+    //       console.log(err)
+    //       res.status(500).json(err)
+    //     }
+    // },
+    delete: async (req, res) => {
+        console.log('DELETE')
+        try {
+          const MuralId = req.params.id
+          const deletedMural = await Mural.findByIdAndRemove(MuralId)
+          res.json(deletedMural)
+        } catch (err) {
+          console.log(err)
+          res.status(500).json(err)
+        }
+    }
 }
 
-
-//= =====================
-// EXPORTS
-//= =====================
-// export the controller with module.exports
-module.exports = muralController;
+module.exports = muralController
