@@ -11,21 +11,22 @@ const muralController = {
             console.log(err)
         }
     },
-    show: async (req, res) => {
-        try {
-            const MuralId = req.params.id
-            const Mural = await Mural.findById(MuralId)
-            res.json(Mural)
-        } catch (err) {
-            console.log(err)
-            res.json(err)
-        }
-    },
+    // show: async (req, res) => {
+    //     try {
+    //         const MuralId = req.params.id
+    //         const Mural = await Mural.findById(MuralId)
+    //         res.json(Mural)
+    //     } catch (err) {
+    //         console.log(err)
+    //         res.json(err)
+    //     }
+    // },
     create: async (req, res) => {
         try {
           const newMural = req.body
           const savedMural = await Mural.create(newMural)
-          res.json(savedMural)
+        //   res.json(savedMural)
+        res.send(200)
         } catch (err) {
           console.log(err)
           res.status(500).json(err)

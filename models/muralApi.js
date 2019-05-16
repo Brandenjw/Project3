@@ -19,12 +19,13 @@ function getAllMurals() {
 
 // Function to create new Mural
 function createNewMurals(newMuralData){
-    return MuralCollection.create(newMuralData);
+    return MuralCollection.create(newMuralData)
+
 }
 
 // Function to get Mural by Id
 function getMuralById(muralId) {
-    return MuralCollection.findById(MuralId);
+    return MuralCollection.findById(muralId);
 }
 
 // Function to delete team by Id

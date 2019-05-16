@@ -28,15 +28,15 @@ app.get('/mural', (req, res) => {
   });
   
 
-// Posting a new mural
+// // Posting a new mural
 app.post('/mural', (req, res) => {
     muralApi.createNewMurals(req.body)
-        .then(() => {
+        .then((mural) => {
             res.send(mural);
         });
 });
 
-// Deleting a mural
+// // Deleting a mural
 app.delete('/mural/:muralId', (req, res) => {
     muralApi.deleteMuralById(req.params.muralId)
         .then(() => {
@@ -50,10 +50,18 @@ app.delete('/mural/:muralId', (req, res) => {
 
 // BIO MODEL//
 
+
+app.get('/bio', (req, res) => {
+        bioApi.getAllImages()
+          .then(bio => {
+            res.send(bio);
+          });
+      });
+
 // Posting a new Bio (img)
 app.post('/bio', (req, res) => {
-    bioApi.createNewBio(req.body)
-        .then(() => {
+    bioApi.createNewImage(req.body)
+        .then((bio) => {
             res.send(bio);
         });
 });
@@ -61,29 +69,31 @@ app.post('/bio', (req, res) => {
 // grab a single Bio (img)
 app.get('/bio/:bioId', (req, res) => {
     //gets bio
-    bioApi.getBioById(req.params.bioId)
+    bioApi.getImageById(req.params.bioId)
         .then((bio) => {
-            bioApi.getBioByTeamId(req.params.bioId)
-                .then((artist) => {
-                    console.log(bio)
-                    console.log(artist)
-                    res.send(bio/bios, { bio, artist });
-                });
+            // FOR LATER ICEBOX
+            // bioApi.getImageByTeamId(req.params.bioId)
+            //     .then((artist) => {
+            //         console.log(bio)
+            //         console.log(artist)
+            //         res.send(bio/bios, { bio, artist });
+            //     });
+            res.send(bio)
         });
 });
 
 // Updating an Bio
 app.put('/bio/:bioId', (req, res) => {
-    bioApi.updateBioById(req.params.bioId, req.body)
-        .then(() => {
+    bioApi.updateImageById(req.params.bioId, req.body)
+        .then((bio) => {
             res.send(bio);
         });
 });
 // Deleting a Bio Image
 app.delete('/bio/:bioId', (req, res) => {
-    bioApi.deleteBioById(req.params.bioId)
+    bioApi.deleteImageById(req.params.bioId)
         .then(() => {
-            res.send(bio);
+            res.send(200);
         });
 });
 //may not be working
