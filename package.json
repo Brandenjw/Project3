@@ -4,9 +4,15 @@
   "description": "<!-- Link to trello Board --> https://trello.com/b/Cm0j6I8u/project-3",
   "main": "app.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd client && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "postinstall": "cd client && npm i && npm run build"
   },
+  "engines": {
+    "node": "10.13.0"
+  },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Brandenjw/Project3.git"

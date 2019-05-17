@@ -2,20 +2,25 @@ const express = require('express')
 const logger = require('morgan')
 const app = express()
 
-app.use(logger('dev'))
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-// Linking CSS
-app.use('/public', express.static("public"))
-
 //calling all established functions in respective APIs
 const muralApi = require('./models/muralApi.js');
 const bioApi = require('./models/bioApi.js');
+
+
+app.use(logger('dev'))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Linking CSS
+app.use('/public', express.static("public"))
+app.use(express.static(`${__dirname}/client/build`))
+
 
 //homepage rendering
 app.get('/', (req, res) => {
   res.send("Hello World")
 })
+
 
 //  MURAL MODEL
 //////////////
