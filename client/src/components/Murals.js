@@ -22,5 +22,10 @@ componentDidMount = () => {
         return ({isMuralsFormDisplayed: !state.isMuralsFormDisplayed})
     })
 }
+handleChange = (e) => {
+    const cloneNewMurals = {...this.state.newMurals}
+    cloneNewMurals[e.target.name] = e.target.value
+    this.setState({newMural: cloneNewMurals})
+  }
 
 export default Murals;
