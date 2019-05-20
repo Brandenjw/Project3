@@ -12,7 +12,6 @@
   "engines": {
     "node": "10.13.0"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Brandenjw/Project3.git"
@@ -25,10 +24,13 @@
   },
   "homepage": "https://github.com/Brandenjw/Project3#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "concurrently": "^4.1.0",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "mongoose": "^5.5.8",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "react-router-dom": "^5.0.0",
+    "styled-components": "^4.2.0"
   }
 }

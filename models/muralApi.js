@@ -5,7 +5,7 @@ const muralSchema = mongoose.Schema({
   //object that defines the type of values for each key
   location: String,
   artist: String,
-  installation: String,
+  Image: String,
   Date: Object
 });
 //creating an API that will take the "mural" collection in mongodb

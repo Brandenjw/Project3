@@ -45,7 +45,7 @@ app.post('/mural', (req, res) => {
 app.delete('/mural/:muralId', (req, res) => {
     muralApi.deleteMuralById(req.params.muralId)
         .then(() => {
-            res.send(mural);
+            res.send(200);
         });
 });
 //may not be working
