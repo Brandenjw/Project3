@@ -1,0 +1,104 @@
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+class Bios extends Component {
+  state = {
+    Bios: [],
+    newBio: {
+      Name: "",
+      Location: ""
+      
+    },
+    isBiosFormDisplayed: false
+  }
+
+getAllBios=()=>{
+    axios.get('/bio/:id').then(res => {
+        console.log(res.data)
+        this.setState({bios: res.data})
+    })
+}
+componentDidMount = () => {
+   this.getAllBios()
+  }
+  toggleBiosForm = () => {
+    this.setState((state, props) => {
+        return ({isBiosFormDisplayed: !state.isBiosFormDisplayed})
+    })
+}
+handleChange = (e) => {
+    const cloneNewBios = {...this.state.newBio}
+    cloneNewBios[e.target.name] = e.target.value
+    console.log(cloneNewBios)
+    this.setState({newBio: cloneNewBios})
+  }
+
+createBio = (e) => {
+    e.preventDefault()
+    axios.post('/bio/:id', this.state.newBio)
+    this.getAllBios()
+}
+
+  deleteBio = (bioId)=> {
+
+      axios.delete(`/${bioId}`)
+      this.getAllBios()
+
+};
+
+  render() {
+    return (
+        <div>
+        <h1>TROVA</h1>
+        {
+           this.state.Bios.map(bios => {
+                return (
+                    <div>
+                       
+                        {bios.Name}
+                        <button onClick={()=>{this.deleteBio(bios._id)}}>X</button>
+                    </div>
+                );
+             })}
+
+{
+    
+         <form onSubmit={this.createBio_id}>
+          
+            <div>
+                <label htmlFor="Name">Artist</label>
+                <textarea
+                    id="Name"
+                    type="text"
+                    name="Name"
+                    onChange={this.handleChange}
+                    value={this.state.newBio.Name}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="Location">Location</label>
+                <textarea
+                    id="Location"
+                    type="text"
+                    name="Location"
+                    onChange={this.handleChange}
+                    value={this.state.newBio.Location}
+                />
+            </div>
+            <button>Update Bio</button>
+        </form>
+
+        
+     }
+    </div>
+);
+}
+}
+                
+    
+        
+
+
+export default Bios;

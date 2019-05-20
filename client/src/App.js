@@ -3,19 +3,26 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import Murals from './components/Murals';
+import Bios from './components/bioComp';
+
 
 
 class App extends Component {
   render () {
-  return (
-  <div className="appContainer">
-  <h1>Mural Map</h1>
-
-  <Murals />
-  </div>
-    
-  );
-}
+    return (
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Murals}/>
+            <Route exact path="/bio/:id" component={Bios}/>
+            {/* <Route path="/:id" component={Mural}/>
+            <Route path="/bio/:id" component={Bio}/> */}
+            
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App;

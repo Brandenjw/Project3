@@ -3,7 +3,9 @@ const mongoose = require("../DB/connection");
 
 const imageSchema = mongoose.Schema({
   //object that defines the type of values for each key
-  image: String
+  Name: String,
+  Location: String,
+  
   
 });
 //creating an API that will take the "Image" collection in mongodb
