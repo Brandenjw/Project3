@@ -55,7 +55,6 @@ app.delete('/mural/:muralId', (req, res) => {
 
 // BIO MODEL//
 
-app.use('/bio', bioRoute)
 app.get('/bio', (req, res) => {
         bioApi.getAllImages()
           .then(bio => {
