@@ -64,7 +64,7 @@ app.delete('/mural/:muralId', (req, res) => {
 // BIO MODEL//
 
 app.get('/bio', (req, res) => {
-        bioApi.getAllImages()
+        bioApi.getAllBios()
           .then(bio => {
             res.send(bio);
           });
@@ -72,7 +72,7 @@ app.get('/bio', (req, res) => {
 
 // Posting a new Bio (img)
 app.post('/bio', (req, res) => {
-    bioApi.createNewImage(req.body)
+    bioApi.createNewBio(req.body)
         .then((bio) => {
             res.send(bio);
         });
@@ -81,7 +81,7 @@ app.post('/bio', (req, res) => {
 // grab a single Bio (img)
 app.get('/bio/:bioId', (req, res) => {
     //gets bio
-    bioApi.getImageById(req.params.bioId)
+    bioApi.getBioById(req.params.bioId)
         .then((bio) => {
             // FOR LATER ICEBOX
             // bioApi.getImageByTeamId(req.params.bioId)
@@ -96,7 +96,7 @@ app.get('/bio/:bioId', (req, res) => {
 
 // Deleting a Bio Image
 app.delete('/bio/:bioId', (req, res) => {
-    bioApi.deleteImageById(req.params.bioId)
+    bioApi.deleteBioById(req.params.bioId)
         .then(() => {
             res.send(200);
         });

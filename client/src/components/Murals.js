@@ -50,7 +50,6 @@ class Murals extends Component {
   state = {
     murals: [],
     newMural: {
-     
       location: "",
       artist: "",
       Image: ""
@@ -84,35 +83,14 @@ class Murals extends Component {
     axios.post("/mural", this.state.newMural);
     this.getAllMurals();
   };
-  // updateTodoItem = () => {
-  //   axios
-  //     .patch(`/mural/${this.props.match.params.id}`, this.state.murals)
-  //     .then(res => {
-  //       this.setState({ murals: res.data, isEditFormDisplayed: false });
-  //     });
-  // };
-
 
   updateMural = (mural, e) => {
     // e.preventDefault()
-    axios.put(`/mural/${mural}`, this.state.newMural)
-      .then(() => {
-          this.setState({isEditFormDisplayed: false})
-          this.getAllMurals()
-      })
-}
-
-//   updateMural = (e) => {
-//     // e.preventDefault()
-//     axios.put(`/mural/${this.props.match.params.id}`, {
-//           Location: this.state.murals.location,
-//           Name: this.state.murals.artist
-//       })
-//       .then(() => {
-//           this.setState({isEditFormDisplayed: true})
-//           this.getAllMurals()
-//       })
-// }
+    axios.put(`/mural/${mural}`, this.state.newMural).then(() => {
+      this.setState({ isEditFormDisplayed: false });
+      this.getAllMurals();
+    });
+  };
 
   deleteMural = muralId => {
     axios.delete(`/mural/${muralId}`);
@@ -150,7 +128,6 @@ class Murals extends Component {
                 {murals._id}
                 <button
                   onClick={() => {
-                  
                     this.updateMural(murals._id);
                   }}
                 >
@@ -165,6 +142,16 @@ class Murals extends Component {
           <Content1>
             <form onSubmit={this.createMural}>
               <div>
+                <label htmlFor="location"> Location</label>
+                <textarea
+                  id="location"
+                  type="text"
+                  name="location"
+                  onChange={this.handleChange}
+                  value={this.state.newMural.location}
+                />
+              </div>
+              <div>
                 <label htmlFor="artist">Artist</label>
                 <input
                   id="artist"
@@ -173,16 +160,6 @@ class Murals extends Component {
                   location=""
                   onChange={this.handleChange}
                   value={this.state.newMural.artist}
-                />
-              </div>
-              <div>
-                <label htmlFor="location"> Location</label>
-                <textarea
-                  id="location"
-                  type="text"
-                  name="location"
-                  onChange={this.handleChange}
-                  value={this.state.newMural.location}
                 />
               </div>
               <div>

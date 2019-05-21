@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../images/beltline1.jpg";
+import Murals from "./Murals";
 
 const Title = styled.h1`
   color: red;
@@ -64,9 +65,9 @@ class Bios extends Component {
   };
 
   getAllBios = () => {
-    axios.get("/bio/:id").then(res => {
+    axios.get("/bio").then(res => {
       console.log(res.data);
-      this.setState({ bios: res.data });
+      this.setState({ Bios: res.data });
     });
   };
   componentDidMount = () => {
@@ -77,16 +78,17 @@ class Bios extends Component {
       return { isBiosFormDisplayed: !state.isBiosFormDisplayed };
     });
   };
-  handleChange = e => {
+  handleChange = (e) => {
     const cloneNewBios = { ...this.state.newBio };
     cloneNewBios[e.target.name] = e.target.value;
     console.log(cloneNewBios);
     this.setState({ newBio: cloneNewBios });
   };
 
-  createBio = e => {
+  createBio = (e) => {
+    console.log("running")
     e.preventDefault();
-    axios.post("/bio/:id", this.state.newBio);
+    axios.post("/bio", this.state.newBio);
     this.getAllBios();
   };
 
@@ -105,11 +107,11 @@ class Bios extends Component {
         <Title1>BIO PAGE</Title1>
         </Wrapper>
         </Content>
-        {this.state.Bios.map(bios => {
+        {this.state.Bios.map(Bios => {
           return (
             <Content2> 
             <div>
-              {Bios.Name}
+            {Bios._id}
               <button
                 onClick={() => {
                   this.deleteBio(Bios._id);
@@ -123,7 +125,7 @@ class Bios extends Component {
         })}
 
         {
-          <form onSubmit={this.createBio_id}>
+          <form onSubmit={this.createBio}>
             <div>
               <label htmlFor="Name">Artist</label>
               <textarea
@@ -136,11 +138,11 @@ class Bios extends Component {
             </div>
 
             <div>
-              <label htmlFor="Location">Location</label>
+              <label htmlFor="Description">Description</label>
               <textarea
-                id="Location"
+                id="Description"
                 type="text"
-                name="Location"
+                name="Description"
                 onChange={this.handleChange}
                 value={this.state.newBio.Location}
               />
