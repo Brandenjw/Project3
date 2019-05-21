@@ -111,7 +111,9 @@ class Bios extends Component {
           return (
             <Content2> 
             <div>
-            {Bios._id}
+            {/* {Bios._id} */}
+            {Bios.Name}
+            {Bios.Description}
               <button
                 onClick={() => {
                   this.deleteBio(Bios._id);
