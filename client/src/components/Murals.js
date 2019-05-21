@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../images/Beltline-3.jpg";
+import logo from "../images/beltline1.jpg";
 
 const Title = styled.h1`
   color: red;
@@ -31,6 +32,18 @@ const Content = styled.div`
 const Content1 = styled.section`
 background-color: grey;
 text-align:center;
+`
+const Content2 = styled.section`
+background-color: black;
+text-align:center;
+color: white;
+`
+const Content3 = styled.section`
+background-image: url("../")
+text-align:center;
+color: white;
+height:400px;
+width: 100vw;
 `
 
 class Murals extends Component {
@@ -86,14 +99,17 @@ class Murals extends Component {
         </Wrapper>
         
             </Content>
+            <Content3> 
+              </Content3> 
 
         {this.state.murals.map(murals => {
           return (
+              <Content2> 
             <div>
-            {murals.location}
-              <br />
               <Link to={`/bio/${murals._id}`}>{murals.artist}</Link>
+              <br />
 
+            {murals.location}
               <br />
               {murals.Image}
               <button
@@ -104,11 +120,12 @@ class Murals extends Component {
                 X
               </button>
             </div>
+            </Content2>
           );
         })}
 
         {
-          // this.state.isMuralFormDisplayed
+          
           <Content1>  
           <form onSubmit={this.createMural}>
             <div>
@@ -140,7 +157,7 @@ class Murals extends Component {
                 name="Image"
                 onChange={this.handleChange}
                 value={this.state.newMural.Image}
-              />
+                />
             </div>
             <button>New Mural</button>
           </form>
