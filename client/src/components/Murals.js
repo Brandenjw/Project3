@@ -125,7 +125,7 @@ class Murals extends Component {
                 >
                   X
                 </button>
-                {murals._id}
+                {/* {murals._id} */}
                 <button
                   onClick={() => {
                     this.updateMural(murals._id);
