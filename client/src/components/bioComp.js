@@ -1,6 +1,57 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import img from "../images/beltline1.jpg";
+
+const Title = styled.h1`
+  color: red;
+  text-align: right;
+  font-size: 70px;
+  text-decoration: underline;
+  margin-left:200px;
+
+`;
+const Title1 = styled.h1`
+  color: black;
+  text-align: right;
+  font-size: 34px;
+`;
+const Wrapper = styled.section`
+  padding: 4em;
+  background: clear;
+`;
+const Content = styled.div`
+    /* border: 5px solid #000; */
+    background-image: url(${img});
+    width: 900px;
+    height: 600px;
+    background-repeat:no-repeat;
+    padding-right:90px;
+    margin-left:90px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  text-align:right;
+  font-size: 35px;
+`;
+const Content1 = styled.section`
+background-color: grey;
+text-align:center;
+`
+const Content2 = styled.section`
+background-color: black;
+text-align:center;
+color: white;
+`
+const Content3 = styled.section`
+background-image: url("../")
+text-align:center;
+color: white;
+height:400px;
+width: 100vw;
+`
 
 class Bios extends Component {
   state = {
@@ -47,11 +98,16 @@ class Bios extends Component {
   render() {
     return (
       <div>
+        <Content> 
+          <Wrapper> 
           <Link to={`/`}>HOME</Link>
-        <h1>TROVA</h1>
-        <h2>BIO PAGE</h2>
+          <Title> Quest Atl</Title>
+        <Title1>BIO PAGE</Title1>
+        </Wrapper>
+        </Content>
         {this.state.Bios.map(bios => {
           return (
+            <Content2> 
             <div>
               {Bios.Name}
               <button
@@ -62,6 +118,7 @@ class Bios extends Component {
                 X
               </button>
             </div>
+        </Content2>
           );
         })}
 
