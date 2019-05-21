@@ -41,11 +41,12 @@ app.post('/mural', (req, res) => {
         });
 });
 
-// Updating an Bio
+// Updating an Mural
 app.put('/mural/:muralId', (req, res) => {
-    bioApi.updateImageById(req.params.bioId, req.body)
+    // updateBioById
+    muralApi.updateMuralById(req.params.muralId, req.body,{new:true})
         .then((bio) => {
-            res.send(mural);
+            res.send(bio);
         });
 });
 // // Deleting a mural

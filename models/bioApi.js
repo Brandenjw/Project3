@@ -1,52 +1,52 @@
 const mongoose = require("../DB/connection");
 
 
-const imageSchema = mongoose.Schema({
+const bioSchema = mongoose.Schema({
   //object that defines the type of values for each key
   Name: String,
-  Location: String,
+  Description: String,
   
   
 });
 //creating an API that will take the "Image" collection in mongodb
-let ImageCollection = mongoose.model("images", imageSchema);
+let BioCollection = mongoose.model("bios", bioSchema);
 
-// Fuction to get all Images
-function getAllImages() {
+// Fuction to get all Bios
+function getAllBios() {
     //using mongoose to get all Images
-    return ImageCollection.find();
+    return BioCollection.find();
 }
 
-// Function to create new image (per artist)
-function createNewImage(newImageData){
-    return ImageCollection.create(newImageData);
+// Function to create new Bio (per artist)
+function createNewBio(newBioData){
+    return BioCollection.create(newBioData);
 }
 
-// Function to get Image by Id
-function getImageById(imageId) {
-    return ImageCollection.findById(imageId);
+// Function to get Bio by Id
+function getBioById(bioId) {
+    return BioCollection.findById(bioId);
 }
 
-// Function to update Image
-function updateImageById(imageId, image) {
-    return ImageCollection.updateOne({ _id: imageId }, image);
+// Function to update Bio
+function updateBioById(bioId, bio) {
+    return BioCollection.findByIdAndUpdate({ _id: bioId }, bio);
     
 }
 
-// Function to delete image by Id
-function deleteImageById(imageId) {
-    return ImageCollection.deleteOne({ _id: imageId });
+// Function to delete Bio by Id
+function deleteBioById(bioId) {
+    return BioCollection.deleteOne({ _id: bioId });
 }
 
 
 
 // calls all established functions to be exported
 module.exports = {
-    getAllImages,
-    createNewImage,
-    getImageById,
-    updateImageById,
-    deleteImageById,
+    getAllBios,
+    createNewBio,
+    getBioById,
+    updateBioById,
+    deleteBioById,
    
 };
 

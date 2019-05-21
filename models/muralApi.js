@@ -29,7 +29,7 @@ function getMuralById(muralId) {
 }
 // Function to update Image
 function updateMuralById(muralId, mural) {
-    return MuralCollection.updateOne({ _id: muralId }, mural);
+    return MuralCollection.findByIdAndUpdate(muralId , mural, {new:true});
     
 }
 

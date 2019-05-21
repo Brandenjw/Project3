@@ -58,7 +58,7 @@ class Bios extends Component {
     Bios: [],
     newBio: {
       Name: "",
-      Location: ""
+      Description: ""
     },
     isBiosFormDisplayed: false
   };
@@ -145,7 +145,7 @@ class Bios extends Component {
                 value={this.state.newBio.Location}
               />
             </div>
-            <button>Update Bio</button>
+            <button>Create Bio</button>
           </form>
         }
       </div>

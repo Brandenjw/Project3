@@ -50,6 +50,7 @@ class Murals extends Component {
   state = {
     murals: [],
     newMural: {
+     
       location: "",
       artist: "",
       Image: ""
@@ -94,10 +95,7 @@ class Murals extends Component {
 
   updateMural = (mural, e) => {
     // e.preventDefault()
-    axios.put(`/mural/${mural}`, {
-          Location: this.state.murals.location,
-          Name: this.state.murals.artist
-      })
+    axios.put(`/mural/${mural}`, this.state.newMural)
       .then(() => {
           this.setState({isEditFormDisplayed: false})
           this.getAllMurals()
@@ -149,8 +147,10 @@ class Murals extends Component {
                 >
                   X
                 </button>
+                {murals._id}
                 <button
                   onClick={() => {
+                  
                     this.updateMural(murals._id);
                   }}
                 >
