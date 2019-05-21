@@ -41,6 +41,13 @@ app.post('/mural', (req, res) => {
         });
 });
 
+// Updating an Bio
+app.put('/mural/:muralId', (req, res) => {
+    bioApi.updateImageById(req.params.bioId, req.body)
+        .then((bio) => {
+            res.send(mural);
+        });
+});
 // // Deleting a mural
 app.delete('/mural/:muralId', (req, res) => {
     muralApi.deleteMuralById(req.params.muralId)
@@ -48,7 +55,7 @@ app.delete('/mural/:muralId', (req, res) => {
             res.send(200);
         });
 });
-//may not be working
+
 
 
 
@@ -86,13 +93,6 @@ app.get('/bio/:bioId', (req, res) => {
         });
 });
 
-// Updating an Bio
-app.put('/bio/:bioId', (req, res) => {
-    bioApi.updateImageById(req.params.bioId, req.body)
-        .then((bio) => {
-            res.send(bio);
-        });
-});
 // Deleting a Bio Image
 app.delete('/bio/:bioId', (req, res) => {
     bioApi.deleteImageById(req.params.bioId)

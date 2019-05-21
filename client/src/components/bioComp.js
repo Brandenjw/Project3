@@ -46,7 +46,7 @@ text-align:center;
 color: white;
 `
 const Content3 = styled.section`
-background-image: url("../")
+/* background-image: url("../") */
 text-align:center;
 color: white;
 height:400px;

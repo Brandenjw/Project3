@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../images/Beltline-3.jpg";
-import logo from "../images/beltline1.jpg";
 
 const Title = styled.h1`
   color: red;
@@ -21,30 +20,31 @@ const Wrapper = styled.section`
   background: clear;
 `;
 const Content = styled.div`
-    /* border: 5px solid #000; */
-    background-image: url(${img});
-    width: 900px;
-    height: 600px;
-    background-repeat:no-repeat;
-    padding-right:90px;
-    margin-left:90px;
+  background-image: url(${img});
+  width: 900px;
+  height: 600px;
+  background-repeat: no-repeat;
+  padding-right: 90px;
+  margin-left: 90px;
 `;
 const Content1 = styled.section`
-background-color: grey;
-text-align:center;
-`
+  background-color: grey;
+  text-align: center;
+  color: white;
+`;
 const Content2 = styled.section`
-background-color: black;
-text-align:center;
-color: white;
-`
+  background-color: black;
+  text-align: center;
+  color: white;
+  height: 100px;
+`;
 const Content3 = styled.section`
-
-text-align:center;
-color: white;
-height:400px;
-width: 100vw;
-`
+  text-align: center;
+  color: white;
+  height: 400px;
+  width: 100vw;
+  background-color: black;
+`;
 
 class Murals extends Component {
   state = {
@@ -83,6 +83,38 @@ class Murals extends Component {
     axios.post("/mural", this.state.newMural);
     this.getAllMurals();
   };
+  // updateTodoItem = () => {
+  //   axios
+  //     .patch(`/mural/${this.props.match.params.id}`, this.state.murals)
+  //     .then(res => {
+  //       this.setState({ murals: res.data, isEditFormDisplayed: false });
+  //     });
+  // };
+
+
+  updateMural = (mural, e) => {
+    // e.preventDefault()
+    axios.put(`/mural/${mural}`, {
+          Location: this.state.murals.location,
+          Name: this.state.murals.artist
+      })
+      .then(() => {
+          this.setState({isEditFormDisplayed: false})
+          this.getAllMurals()
+      })
+}
+
+//   updateMural = (e) => {
+//     // e.preventDefault()
+//     axios.put(`/mural/${this.props.match.params.id}`, {
+//           Location: this.state.murals.location,
+//           Name: this.state.murals.artist
+//       })
+//       .then(() => {
+//           this.setState({isEditFormDisplayed: true})
+//           this.getAllMurals()
+//       })
+// }
 
   deleteMural = muralId => {
     axios.delete(`/mural/${muralId}`);
@@ -92,75 +124,79 @@ class Murals extends Component {
   render() {
     return (
       <div>
-        <Content> 
-        <Wrapper>
-          <Title> Quest Atl</Title>
-          <Title1>An App to find your favorite Beltline Murals</Title1>
-        </Wrapper>
-        
-            </Content>
-            <Content3> 
-              </Content3> 
+        <Content>
+          <Wrapper>
+            <Title> Quest Atl</Title>
+            <Title1>An App to find your favorite Beltline Murals</Title1>
+          </Wrapper>
+        </Content>
+        <Content3 />
 
         {this.state.murals.map(murals => {
           return (
-              <Content2> 
-            <div>
-              <Link to={`/bio/${murals._id}`}>{murals.artist}</Link>
-              <br />
+            <Content2>
+              <div>
+                <Link to={`/bio/${murals._id}`}>{murals.artist}</Link>
+                <br />
 
-            {murals.location}
-              <br />
-              {murals.Image}
-              <button
-                onClick={() => {
-                  this.deleteMural(murals._id);
-                }}
-              >
-                X
-              </button>
-            </div>
+                {murals.location}
+                <br />
+                {murals.Image}
+                <button
+                  onClick={() => {
+                    this.deleteMural(murals._id);
+                  }}
+                >
+                  X
+                </button>
+                <button
+                  onClick={() => {
+                    this.updateMural(murals._id);
+                  }}
+                >
+                  Update
+                </button>
+              </div>
             </Content2>
           );
         })}
 
         {
-          
-          <Content1>  
-          <form onSubmit={this.createMural}>
-            <div>
-              <label htmlFor="artist">Artist</label>
-              <input
-                id="artist"
-                type="text"
-                name="artist"
-                location=""
-                onChange={this.handleChange}
-                value={this.state.newMural.artist}
-              />
-            </div>
-            <div>
-              <label htmlFor="location"> Location</label>
-              <textarea
-                id="location"
-                type="text"
-                name="location"
-                onChange={this.handleChange}
-                value={this.state.newMural.location}
-              />
-            </div>
-            <div>
-              <label htmlFor="Image">Image</label>
-              <textarea
-                id="Image"
-                type="image"
-                name="Image"
-                onChange={this.handleChange}
-                value={this.state.newMural.Image}
+          <Content1>
+            <form onSubmit={this.createMural}>
+              <div>
+                <label htmlFor="artist">Artist</label>
+                <input
+                  id="artist"
+                  type="text"
+                  name="artist"
+                  location=""
+                  onChange={this.handleChange}
+                  value={this.state.newMural.artist}
                 />
-            </div>
-            <button>New Mural</button>
-          </form>
+              </div>
+              <div>
+                <label htmlFor="location"> Location</label>
+                <textarea
+                  id="location"
+                  type="text"
+                  name="location"
+                  onChange={this.handleChange}
+                  value={this.state.newMural.location}
+                />
+              </div>
+              <div>
+                <label htmlFor="Image">Image</label>
+                <textarea
+                  id="Image"
+                  type="image"
+                  name="Image"
+                  onChange={this.handleChange}
+                  value={this.state.newMural.Image}
+                />
+              </div>
+              <button>New Mural</button>
+            </form>
           </Content1>
         }
       </div>

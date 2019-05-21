@@ -27,6 +27,11 @@ function createNewMurals(newMuralData){
 function getMuralById(muralId) {
     return MuralCollection.findById(muralId);
 }
+// Function to update Image
+function updateMuralById(muralId, mural) {
+    return MuralCollection.updateOne({ _id: muralId }, mural);
+    
+}
 
 // Function to delete team by Id
 function deleteMuralById(muralId) {
@@ -41,6 +46,7 @@ module.exports = {
     createNewMurals,
     getMuralById,
     deleteMuralById,
+    updateMuralById
    
 };
 
