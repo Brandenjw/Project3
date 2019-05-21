@@ -1,6 +1,37 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import img from "../images/Beltline-3.jpg";
+
+const Title = styled.h1`
+  color: red;
+  text-align: center;
+  font-size: 70px;
+  text-decoration: underline;
+`;
+const Title1 = styled.h1`
+  color: white;
+  text-align: center;
+  font-size: 56px;
+`;
+const Wrapper = styled.section`
+  padding: 4em;
+  background: clear;
+`;
+const Content = styled.div`
+    /* border: 5px solid #000; */
+    background-image: url(${img});
+    width: 900px;
+    height: 600px;
+    background-repeat:no-repeat;
+    padding-right:90px;
+    margin-left:90px;
+`;
+const Content1 = styled.section`
+background-color: grey;
+text-align:center;
+`
 
 class Murals extends Component {
   state = {
@@ -48,15 +79,18 @@ class Murals extends Component {
   render() {
     return (
       <div>
-        <h1>TROVA</h1>
+        <Content> 
+        <Wrapper>
+          <Title> Quest Atl</Title>
+          <Title1>An App to find your favorite Beltline Murals</Title1>
+        </Wrapper>
+        
+            </Content>
+
         {this.state.murals.map(murals => {
           return (
             <div>
-              {/* //  key={murals._id}> */}
-              {/* <button onClick={this.toggleMuralForm}>+ New Mural</button> */}
-              {/* <Link to={`/${murals.description}`}>{murals.description}</Link> */}
-
-              {murals.location}
+            {murals.location}
               <br />
               <Link to={`/bio/${murals._id}`}>{murals.artist}</Link>
 
@@ -75,6 +109,7 @@ class Murals extends Component {
 
         {
           // this.state.isMuralFormDisplayed
+          <Content1>  
           <form onSubmit={this.createMural}>
             <div>
               <label htmlFor="artist">Artist</label>
@@ -109,6 +144,7 @@ class Murals extends Component {
             </div>
             <button>New Mural</button>
           </form>
+          </Content1>
         }
       </div>
     );

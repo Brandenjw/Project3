@@ -4,6 +4,13 @@ import logo from './logo.svg';
 import './App.css';
 import Murals from './components/Murals';
 import Bios from './components/bioComp';
+import styled from "styled-components";
+
+const Title = styled.h1`
+color: black;
+text-align: center;
+font-size: 38px;
+`
 
 
 
@@ -17,6 +24,7 @@ class App extends Component {
             <Route exact path="/bio/:id" component={Bios}/>
             {/* <Route path="/:id" component={Mural}/>
             <Route path="/bio/:id" component={Bio}/> */}
+            <title>Mural Quest</title>
             
           </Switch>
         </div>
