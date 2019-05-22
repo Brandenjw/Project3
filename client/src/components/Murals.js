@@ -187,7 +187,7 @@ class Murals extends Component {
                 <label htmlFor="Image">Image</label>
                 <textarea
                   id="Image"
-                  type="image"
+                  type="file"
                   name="Image"
                   onChange={this.handleChange}
                   value={this.state.newMural.Image}

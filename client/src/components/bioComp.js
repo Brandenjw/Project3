@@ -7,11 +7,41 @@ import Murals from "./Murals";
 import { SocialIcon } from 'react-social-icons';
 import posed from "react-pose";
 
+
+// STYLING COMPONENTS
+/////////////////////////////////
+const List = posed.div({
+  idle: { scale: 1 },
+  hovered: { scale: 2 }
+  });
+const Title2 = styled(List)`
+text-align: center;
+color:black;
+/* position: fixed; Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  bottom: 34;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  /* overflow: auto; Enable scroll if needed */
+  padding-top: 50px;
+`
+const Title3 = styled.h6`
+text-align: center;
+color: black;
+`
+const Title4 = styled.h6`
+text-align: center;
+color:black;
+`
+
 const Title = styled.h1`
-  color: black;
+  color: red;
   text-align: center;
   font-size: 70px;
   text-decoration: underline;
+  box-shadow: 0px 0px 80px white;
   /* margin-left:200px; */
 
 `;
@@ -38,6 +68,7 @@ const Content = styled.div`
   width: 50%;
   text-align:right;
   font-size: 35px;
+  border: solid black;
 `;
 const Content1 = styled.section`
 background-color: grey;
@@ -68,6 +99,13 @@ text-align: center;
 background-color: teal;
 height: 50px;
 `
+const Wrapper2 = styled.div`
+text-align: center;
+background-color: black;
+color: white;
+`
+// REACT CODE
+///////////////////////////
 
 class Bios extends Component {
   state = {
@@ -123,7 +161,10 @@ class Bios extends Component {
           <Title> Quest Atl</Title>
         <Content> 
           <Wrapper> 
-        <Title1>BIO PAGE</Title1>
+            <Title2>*GregMike</Title2>
+        <Title1>MAP PAGE</Title1>
+        <Title3>*RRL</Title3>
+        <Title4>*ChrisVeal</Title4>
         </Wrapper>
         </Content>
         {this.state.Bios.map(Bios => {
@@ -144,7 +185,7 @@ class Bios extends Component {
         </Content2>
           );
         })}
-
+        <Wrapper2> 
         {
           <form onSubmit={this.createBio}>
             <div>
@@ -171,6 +212,7 @@ class Bios extends Component {
             <button>Create Bio</button>
           </form>
         }
+        </Wrapper2>
         <Content6
           pose={this.state.hovering ? "hovered" : "idle"}
           onMouseEnter={() => this.setState({ hovering: true })}
