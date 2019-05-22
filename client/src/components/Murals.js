@@ -46,6 +46,7 @@ const Content3 = styled.section`
   background-color: black;
 `;
 
+
 class Murals extends Component {
   state = {
     murals: [],
