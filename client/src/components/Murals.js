@@ -58,6 +58,10 @@ const Content4 = styled.section`
 text-align: center;
 background-color: teal;
 `
+const Paragraph = styled.section`
+text-align: center;
+font-size: 24px;
+`
 
 
 class Murals extends Component {
@@ -197,6 +201,8 @@ class Murals extends Component {
             </form>
           </Content1>
         }
+      <Paragraph>Welcome to our Beta Quest Atl App.<br></br> Use the forms above to enter the name of an artist as well as where their work of art can be found.<br></br>  You may also try inserting a photo file for your submission.<br></br>  Please allow atleast 24 hours for artist bios to be updated<br></br> Once entered you can click on one of the artists name' to see a map view of where their work is on the beltline along with a bio thats accessible by clicking an artists name.
+      .</Paragraph>
       </div>
     );
   }

@@ -104,6 +104,10 @@ text-align: center;
 background-color: black;
 color: white;
 `
+const Paragraph = styled.section`
+text-align: center;
+font-size: 24px;
+`
 // REACT CODE
 ///////////////////////////
 
@@ -213,6 +217,7 @@ class Bios extends Component {
           </form>
         }
         </Wrapper2>
+        <Paragraph>If there is any information regarding an artist and their work that needs updating,<br></br> please use forms above to submit that information. Thanks</Paragraph>
         <Content6
           pose={this.state.hovering ? "hovered" : "idle"}
           onMouseEnter={() => this.setState({ hovering: true })}
@@ -221,6 +226,7 @@ class Bios extends Component {
         <Link to={`/`}>HOME</Link>
         </Content6>
       </div>
+        
     );
   }
 }
