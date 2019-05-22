@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { SocialIcon } from 'react-social-icons';
 import img from "../images/Beltline-3.jpg";
 
 const Title = styled.h1`
@@ -45,6 +46,10 @@ const Content3 = styled.section`
   width: 100vw;
   background-color: black;
 `;
+const Content4 = styled.section`
+text-align: center;
+background-color: black;
+`
 
 
 class Murals extends Component {
@@ -101,6 +106,11 @@ class Murals extends Component {
   render() {
     return (
       <div>
+        <Content4>
+        <SocialIcon url="https://www.instagram.com/questatl/" />
+        <SocialIcon url="https://twitter.com/BrandenWhite19" />
+        <SocialIcon url="https://www.facebook.com/Quest-Atl-559686434556995/?modal=admin_todo_tour" />
+        </Content4>
         <Content>
           <Wrapper>
             <Title> Quest Atl</Title>
