@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SocialIcon } from 'react-social-icons';
 import img from "../images/Beltline-3.jpg";
+import posed from "react-pose";
+
+
 
 const Title = styled.h1`
   color: red;
@@ -29,9 +32,11 @@ const Content = styled.div`
   margin-left: 90px;
 `;
 const Content1 = styled.section`
-  background-color: grey;
+  background-color: teal;
   text-align: center;
   color: white;
+  display: flex;
+  justify-content: space-around;
 `;
 const Content2 = styled.section`
   background-color: black;
@@ -51,7 +56,7 @@ const Content3 = styled.section`
 `;
 const Content4 = styled.section`
 text-align: center;
-background-color: black;
+background-color: teal;
 `
 
 
@@ -165,6 +170,7 @@ class Murals extends Component {
                   value={this.state.newMural.location}
                 />
               </div>
+              <br></br>
               <div>
                 <label htmlFor="artist">Artist</label>
                 <input
@@ -176,6 +182,7 @@ class Murals extends Component {
                   value={this.state.newMural.artist}
                 />
               </div>
+              <br></br>
               <div>
                 <label htmlFor="Image">Image</label>
                 <textarea

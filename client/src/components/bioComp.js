@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import img from "../images/beltline1.jpg";
 import Murals from "./Murals";
+import { SocialIcon } from 'react-social-icons';
+import posed from "react-pose";
 
 const Title = styled.h1`
-  color: red;
-  text-align: right;
+  color: black;
+  text-align: center;
   font-size: 70px;
   text-decoration: underline;
-  margin-left:200px;
+  /* margin-left:200px; */
 
 `;
 const Title1 = styled.h1`
@@ -52,6 +54,19 @@ text-align:center;
 color: white;
 height:400px;
 width: 100vw;
+`
+const Content4 = styled.section`
+text-align: center;
+background-color: teal;
+`
+const Content5 = posed.div({
+idle: { scale: 1 },
+hovered: { scale: 2 }
+});
+const Content6 = styled(Content5)`
+text-align: center;
+background-color: teal;
+height: 50px;
 `
 
 class Bios extends Component {
@@ -100,10 +115,14 @@ class Bios extends Component {
   render() {
     return (
       <div>
+        <Content4> 
+         <SocialIcon url="https://www.instagram.com/questatl/" />
+        <SocialIcon url="https://twitter.com/BrandenWhite19" />
+        <SocialIcon url="https://www.facebook.com/Quest-Atl-559686434556995/?modal=admin_todo_tour" />
+        </Content4>
+          <Title> Quest Atl</Title>
         <Content> 
           <Wrapper> 
-          <Link to={`/`}>HOME</Link>
-          <Title> Quest Atl</Title>
         <Title1>BIO PAGE</Title1>
         </Wrapper>
         </Content>
@@ -152,6 +171,13 @@ class Bios extends Component {
             <button>Create Bio</button>
           </form>
         }
+        <Content6
+          pose={this.state.hovering ? "hovered" : "idle"}
+          onMouseEnter={() => this.setState({ hovering: true })}
+          onMouseLeave={() => this.setState({ hovering: false })}
+        >
+        <Link to={`/`}>HOME</Link>
+        </Content6>
       </div>
     );
   }
