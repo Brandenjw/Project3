@@ -14,7 +14,7 @@ const Title = styled.h1`
 const Title1 = styled.h1`
   color: white;
   text-align: center;
-  font-size: 56px;
+  font-size: 48px;
 `;
 const Wrapper = styled.section`
   padding: 4em;
@@ -37,14 +37,17 @@ const Content2 = styled.section`
   background-color: black;
   text-align: center;
   color: white;
-  height: 100px;
+  /* height: 100px; */
+  /* border: solid white; */
+  font-size: 30px;
 `;
 const Content3 = styled.section`
   text-align: center;
   color: white;
-  height: 400px;
+  height: 100px;
   width: 100vw;
   background-color: black;
+  /* border: solid white; */
 `;
 const Content4 = styled.section`
 text-align: center;
@@ -113,7 +116,7 @@ class Murals extends Component {
         </Content4>
         <Content>
           <Wrapper>
-            <Title> Quest Atl</Title>
+            <Title>  Quest Atl</Title>
             <Title1>An App to find your favorite Beltline Murals</Title1>
           </Wrapper>
         </Content>
